@@ -1,9 +1,40 @@
-<h1>¡MI PRIMERA APP!</h1>
-<p>Hola, esto es HTML normal</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferretería - Encuentra tus herramientas</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="container">
+    <div class="hero-section">
+      <h1 class="hero-title">Encuentra tus herramientas</h1>
+      <p class="hero-subtitle">¿Qué herramienta necesitas?</p>
 
-<!-- Esto es programación en el HTML -->
-<button (click)="contador = contador + 1">Haz click</button>
-<p>Has hecho click {{ contador }} veces</p>
+      <div class="search-section">
+        <input type="text"
+               class="search-input"
+               placeholder="Buscar herramientas...">
+        <button class="search-button">Buscar</button>
+      </div>
 
-<!-- Esto es un if como en programación normal -->
-<p *ngIf="contador > 5">¡Wow, ya llevas más de 5 clicks!</p>
+      <div class="options-grid">
+        <div class="option-card catalog-option">
+          <div class="option-icon">📋</div>
+          <h3 class="option-title">Catálogo completo</h3>
+          <p class="option-description">Explora todas nuestras herramientas y productos disponibles</p>
+        </div>
+
+        <div class="option-card">
+          <div class="option-icon">🔍</div>
+          <h3 class="option-title">Búsqueda avanzada</h3>
+          <p class="option-description">Encuentra herramientas específicas por categoría o marca</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
