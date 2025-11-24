@@ -38,14 +38,49 @@ html, body {
   background-color: #C77E3C;
   width: 100%;
   padding: 20px;
-  box-shadow: none; /* elimina sombra si no la quieres */
+  box-shadow: none; /* elimina sombras */
   border-radius: 0; /* sin bordes redondeados */
   text-align: left;
   width: 100%; /* ocupa todo el ancho */
   display: flex;
   align-items: center;
-  gap:12px;
+  gap: 12px;
   margin: 0; /* sin margen externo */
+}
+
+
+.right-section {
+  display: flex;
+  gap: 0.5rem;
+  text-align: right;
+  margin: 0;
+  align-content: inherit;
+}
+
+/*Botones inicio sesion y registrarse*/
+.btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-login {
+  background-color: transparent;
+  color: #3B82F6;
+  color: white;
+}
+
+.btn-register {
+  background-color: white;
+  color: black;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .icono{
@@ -108,4 +143,3 @@ html, body {
     font-size: 24px;
     color: #333;
   }
-
