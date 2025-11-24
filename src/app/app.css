@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  background-image: url('/img/toolbox.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.8); /* si quieres difuminar con capa blanca */
+    z-index: -1;
+  }
+
+.container {
+  background-color: #C77E3C;
+  width: 100%;
+  padding: 20px;
+  box-shadow: none; /* elimina sombra si no la quieres */
+  border-radius: 0; /* sin bordes redondeados */
+  text-align: left;
+  width: 100%; /* ocupa todo el ancho */
+  display: flex;
+  align-items: center;
+  gap:12px;
+  margin: 0; /* sin margen externo */
+}
+
+.icono{
+  width: 50px;
+  height: 50px;
+  object-fit:contain;
+
+}
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+  .menu-toggle span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    display: block;
+  }
+
+/* Menú lateral oculto por defecto */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  transition: left 0.3s ease;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .side-menu li {
+    padding: 15px 20px;
+  }
+
+  .side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .side-menu.open {
+    left: 0;
+  }
+  .container p {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+
