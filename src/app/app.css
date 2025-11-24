@@ -4,10 +4,9 @@
   box-sizing: border-box;
 }
 
+
+
 body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
   position: relative;
   z-index: 1;
   background-image: url('/img/toolbox.jpg');
@@ -15,13 +14,17 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 html, body {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  overflow: hidden; /* evita que el ::before se desborde */
 }
+
+
+
   body::before {
     content: "";
     position: absolute;
@@ -35,8 +38,11 @@ html, body {
   }
 
 .container {
+  margin: 0;
+  padding: 0;
   background-color: #C77E3C;
   width: 100%;
+  height: 100%;
   padding: 20px;
   box-shadow: none; /* elimina sombras */
   border-radius: 0; /* sin bordes redondeados */
@@ -50,6 +56,9 @@ html, body {
 
 
 .right-section {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   display: flex;
   gap: 0.5rem;
   text-align: right;
@@ -80,7 +89,7 @@ html, body {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .icono{
@@ -105,6 +114,75 @@ html, body {
     border-radius: 2px;
     display: block;
   }
+
+.contenedor2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Mantiene título arriba y buscador debajo */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.titulo {
+  white-space: nowrap;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+/* Nuevo contenedor horizontal */
+.search-box {
+  display: flex; /* Coloca input y botón en fila */
+  align-items: center;
+}
+
+.buscador {
+  flex: 1;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  width: 300px; 
+  box-sizing: border-box;
+}
+
+.btn-catalogo {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-left: none;
+  background-color: #C77E3C;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+  .btn-catalogo:hover {
+    background-color: #a65f2a;
+  }
+.btn-extra {
+  margin-top: 10px; /* separación respecto al buscador */
+  width: calc((300px + 24px)*1.3); /* mismo ancho que input + botón catálogo */
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  background-color: #C77E3C; /* mismo color que catálogo */
+  color: white;
+  border-radius: 4px; /* bordes redondeados uniformes */
+  cursor: pointer;
+  display: block; /* para que quede debajo */
+}
+
+  .btn-extra:hover {
+    background-color: #a65f2a; /* mismo hover */
+  }
+
 
 /* Menú lateral oculto por defecto */
 .side-menu {
