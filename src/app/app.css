@@ -130,6 +130,7 @@ html, body {
 
 .contenedor2 {
   flex: 1;
+  margin-top: 125px;
   display: flex;
   flex-direction: column; /* Mantiene título arriba y buscador debajo */
   justify-content: center;
@@ -236,3 +237,47 @@ html, body {
     font-size: 24px;
     color: #333;
   }
+
+/* Botones retos */
+.reto-daltonismo {
+  margin-top: 30px;
+  padding: 15px;
+  background: #2D3748;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
+  height: auto;
+  align-self: flex-start;
+}
+
+  .cuadro-daltonismo h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+.btn-tipo {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  margin: 8px 0;
+  background: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+  .btn-tipo:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+  }
+
+.btn-prot {
+  filter: sepia(0.3) saturate(2) hue-rotate(45deg);
+}
+
+.btn-deut {
+  filter: sepia(0.5) saturate(1.5) hue-rotate(-45deg);
+}
