@@ -16,12 +16,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: filter 300ms ease;
 }
 html, body {
-  height: 100%; /* asegura que ocupen toda la ventana */
-}
-h1, p {
-  margin: 0; /* aseguramos que no tengan márgenes */
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -282,12 +282,13 @@ h1, p {
     transform: translateY(-2px);
   }
 
-.btn-prot {
-  filter: sepia(0.3) saturate(2) hue-rotate(45deg);
+
+.modo-protanopia {
+  filter: invert(0.2) sepia(0.3) saturate(2) hue-rotate(45deg);
 }
 
-.btn-deut, .btn-lec {
-  filter: sepia(0.5) saturate(1.5) hue-rotate(-45deg);
+.modo-deuteranopia{
+    filter: invert(0.2) sepia(0.5) saturate(1.5) hue-rotate(-45deg) 
 }
 
 

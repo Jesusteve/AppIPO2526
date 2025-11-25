@@ -45,13 +45,12 @@
     </div>
     <button class="btn-extra">🔍 Buscar</button>
 
-    <div class="contenedor-accesibilidad">
-      <div class="reto-daltonismo" id="cuadroDaltonismo">
-        <h3>Accesibilidad visual</h3>
-        <button class="btn-tipo btn-deut" onclick="activarModo('deuteranopia')">Deuteranopía</button>
-        <button class="btn-tipo btn-prot" onclick="activarModo('protanopia')">Protanopía</button>
-        <button class="btn-tipo" onclick="desactivarModos()">Normal</button>
-      </div>
+    <div class="reto-daltonismo" id="cuadroDaltonismo">
+      <h3>Accesibilidad visual</h3>
+      <button class="btn-tipo modo-deuteranopia" (click)="activarModo('deuteranopia')">Deuteranopía</button>
+      <button class="btn-tipo modo-protanopia" (click)="activarModo('protanopia')">Protanopía</button>
+      <button class="btn-tipo" (click)="desactivarModos()">Normal</button>
+    </div>
 
       <div class="reto-procesamiento-visual" id="cuadroLectura">
         <h3>Accesibilidad visual</h3>
