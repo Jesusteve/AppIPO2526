@@ -8,7 +8,7 @@
 
 body {
   position: relative;
-  z-index: 1;
+  z-index: -1;
   background-image: url('/img/toolbox.jpg');
   background-size: cover;
   background-position: center;
@@ -23,6 +23,8 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+
 
 
 
@@ -52,7 +54,6 @@ html, body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 0; /* sin margen externo */
 }
 
 
@@ -147,7 +148,6 @@ html, body {
 .titulo {
   white-space: nowrap;
   font-size: 3rem;
-  margin-bottom: 20px;
   color: black;
 }
 
@@ -234,14 +234,22 @@ html, body {
     left: 0;
   }
   .container p {
-    margin-bottom: 20px;
     font-size: 24px;
     color: #333;
   }
 
 /* Botones retos */
-.reto-daltonismo {
-  margin-top: 30px;
+/* Nuevo contenedor para agrupar las tablas horizontalmente */
+.contenedor-accesibilidad {
+  display: flex; /* Activa flexbox */
+  flex-direction: row; /* Coloca los elementos en fila (horizontal) */
+  gap: 25px; /* Espacio entre la tabla izquierda y derecha */
+  margin-top: 40px; /* Separación respecto al buscador/botón de arriba */
+  justify-content: center; /* Centra el grupo horizontalmente en la pantalla */
+}
+
+.reto-daltonismo,
+.reto-procesamiento-visual {
   padding: 15px;
   background: #2D3748;
   color: white;
@@ -250,15 +258,14 @@ html, body {
   text-align: center;
   width: 200px;
   height: auto;
-  align-self: flex-start;
 }
 
-  .cuadro-daltonismo h3 {
+  .cuadro-daltonismo h3, .cuadroLectura h3 {
     margin-bottom: 15px;
     color: #333;
   }
 
-.btn-tipo {
+.btn-tipo, .btn-pred {
   display: block;
   width: 100%;
   padding: 6px;
@@ -270,7 +277,7 @@ html, body {
   transition: all 0.3s;
 }
 
-  .btn-tipo:hover {
+  .btn-tipo:hover, .btn-pred:hover {
     background: #e0e0e0;
     transform: translateY(-2px);
   }
@@ -283,3 +290,5 @@ html, body {
 .modo-deuteranopia{
     filter: invert(0.2) sepia(0.5) saturate(1.5) hue-rotate(-45deg) 
 }
+
+
