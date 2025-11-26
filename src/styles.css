@@ -592,3 +592,134 @@ body.modo-lectura {
     display: none;
   }
 
+/* --- ESTILOS DEL LOGIN (MODAL) --- */
+
+/* Fondo oscuro detrás de la ventana */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  z-index: 3000; /* Encima de todo, incluso del menú */
+  backdrop-filter: blur(2px); /* Efecto borroso elegante */
+}
+
+/* La caja blanca del login */
+.login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 40px;
+  width: 90%;
+  max-width: 450px; /* Ancho máximo como en la foto */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 3001; /* Encima del overlay */
+  text-align: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Botón cerrar (X) */
+.close-login {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Títulos */
+.login-title {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.login-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+/* Campos del formulario */
+.form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  background-color: #f7f7f7; /* Fondo grisáceo de los inputs */
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+  .login-input:focus {
+    border-color: #C77E3C;
+    background-color: white;
+  }
+
+/* Enlace de contraseña */
+.forgot-password {
+  display: block;
+  text-align: right;
+  color: #558acc; /* Azulito típico de enlaces */
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+}
+
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+/* Botón Iniciar sesión */
+.btn-submit-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #a88b68; /* Color marrón dorado de la foto */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+  .btn-submit-login:hover {
+    background-color: #8f7556;
+  }
+
+
+
+/* Para poner inputs uno al lado del otro (Nombre y Apellidos) */
+.form-row {
+  display: flex;
+  gap: 15px; /* Espacio entre los dos inputs */
+}
+
+  /* Hace que ambos ocupen el 50% del espacio */
+  .form-row .form-group {
+    flex: 1;
+  }
+

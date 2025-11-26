@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   menuAbierto: boolean = false;
   mostrarPanelDaltonismo: boolean = false;
   mostrarPanelLectura: boolean = false;
+  mostrarLogin: boolean = false;
+  mostrarRegistro: boolean = false; 
 
   ngOnInit(): void {
     this.cargarModoGuardado();
@@ -96,5 +98,8 @@ export class AppComponent implements OnInit {
       this.mostrarPanelLectura = true;
       this.mostrarPanelDaltonismo = false;
     }
+  }
+  toggleLogin(): void {
+    this.mostrarLogin = !this.mostrarLogin;
   }
 }

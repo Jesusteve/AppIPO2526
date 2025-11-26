@@ -10,8 +10,8 @@
 
   <div class="right-section">
     <button class="btn carro">🛒 </button>
-    <button class="btn btn-login">Iniciar sesión</button>
-    <button class="btn btn-register">Registrarse</button>
+    <button class="btn btn-login" (click)="mostrarLogin = true">Iniciar sesión</button>
+    <button class="btn btn-register" (click)="mostrarRegistro = true">Registrarse</button>
   </div>
 </div>
 
@@ -34,11 +34,7 @@
 
   <ul class="menu-list">
 
-    <li>
-      <a href="javascript:void(0)" (click)="toggleMenu()">
-        <span class="material-symbols-outlined">home</span> Inicio
-      </a>
-    </li>
+    
     <li>
       <a href="javascript:void(0)" (click)="toggleMenu()">
         <span class="material-symbols-outlined">inventory_2</span> Catálogo
@@ -120,4 +116,74 @@
     </div>
   </div>
 
+  <div class="login-overlay" *ngIf="mostrarLogin" (click)="mostrarLogin = false"></div>
+
+  <div class="login-modal" *ngIf="mostrarLogin">
+
+    <button class="close-login" (click)="mostrarLogin = false">&times;</button>
+
+    <h2 class="login-title">Iniciar sesión</h2>
+    <p class="login-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
+
+    <form class="login-form">
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@email.com" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" placeholder="........" class="login-input">
+      </div>
+
+      <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+      <button type="button" class="btn-submit-login">Iniciar sesión</button>
+    </form>
+  </div>
+  <div class="login-overlay" *ngIf="mostrarRegistro" (click)="mostrarRegistro = false"></div>
+
+  <div class="login-modal" *ngIf="mostrarRegistro">
+
+    <button class="close-login" (click)="mostrarRegistro = false">&times;</button>
+
+    <h2 class="login-title">Crear cuenta</h2>
+    <p class="login-subtitle">Completa la información para registrarte</p>
+
+    <form class="login-form">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Juan" class="login-input">
+        </div>
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input type="text" placeholder="Pérez García" class="login-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de nacimiento</label>
+        <input type="date" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Dirección predeterminada de envío</label>
+        <input type="text" placeholder="Calle Principal 123, Ciudad" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@email.com" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" placeholder="........" class="login-input">
+      </div>
+
+      <button type="button" class="btn-submit-login" style="margin-top: 10px;">Registrarse</button>
+    </form>
+  </div>
 </div>
