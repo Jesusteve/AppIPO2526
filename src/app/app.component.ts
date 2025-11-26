@@ -37,25 +37,14 @@ export class AppComponent implements OnInit {
       // Reset a normal
       document.body.style.backgroundColor = '';
       document.body.style.filter = 'none';
-      document.body.classList.remove('modo-protanopia', 'modo-deuteranopia');
     }
     else if (modo == 'lecturaDesc') {
-      document.body.style.fontFamily = '';
-      document.body.style.textAlign = '';
-      document.body.style.fontSize = '';
-      document.body.style.lineHeight = '';
-      document.body.style.color = '';
       document.body.classList.remove('modo-lectura');
     }
     else {
       document.body.style.backgroundColor = '';
       document.body.style.filter = 'none';
-      document.body.style.fontFamily = '';
-      document.body.style.textAlign = '';
-      document.body.style.fontSize = '';
-      document.body.style.lineHeight = '';
-      document.body.style.color = '';
-      document.body.classList.remove('modo-protanopia', 'modo-deuteranopia','modo-lectura');
+      document.body.classList.remove('modo-lectura');
     }
 
     this.modoActual = modo;

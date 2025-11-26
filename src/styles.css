@@ -282,15 +282,15 @@ html, body {
   }
 
 
-.modo-protanopia {
+.protanopia {
   filter: invert(0.2) sepia(0.3) saturate(2) hue-rotate(45deg);
 }
 
-.modo-deuteranopia, .modo-lectura {
+.deuteranopia {
   filter: invert(0.2) sepia(0.5) saturate(1.5) hue-rotate(-45deg)
 }
 
-.modo-lectura {
+.lectura {
   filter: invert(0.2) sepia(0.3) saturate(2) hue-rotate(90deg)
 }
 
@@ -329,3 +329,4 @@ body.modo-lectura {
   body.modo-lectura body::before {
     display: none;
   }
+
