@@ -264,7 +264,7 @@ html, body {
   color: #333;
 }
 
-.btn-tipo, .btn-pred {
+.btn-tipo{
   display: block;
   width: 100%;
   padding: 6px;
@@ -276,7 +276,7 @@ html, body {
   transition: all 0.3s;
 }
 
-  .btn-tipo:hover, .btn-pred:hover {
+  .btn-tipo:hover{
     background: #e0e0e0;
     transform: translateY(-2px);
   }
@@ -289,3 +289,43 @@ html, body {
 .modo-deuteranopia, .modo-lectura {
   filter: invert(0.2) sepia(0.5) saturate(1.5) hue-rotate(-45deg)
 }
+
+.modo-lectura {
+  filter: invert(0.2) sepia(0.3) saturate(2) hue-rotate(90deg)
+}
+
+/* --- MODO LECTURA ADAPTADA --- */
+body.modo-lectura {
+  /* Forzamos la fuente y colores globales */
+  font-family: 'Segoe UI', Arial, sans-serif !important;
+  text-align: left !important;
+  font-size: 19px !important;
+  line-height: 1.6 !important;
+  /* Fondo limpio para leer mejor, quitando la imagen de fondo */
+  background-image: none !important;
+  background-color: #FAFAFA !important;
+  color: #333 !important;
+}
+
+ 
+  /* Forzamos a todos los tipos de botones a heredar la fuente 
+   cuando el modo lectura está activo */
+  body.modo-lectura button,
+  body.modo-lectura .btn,
+  body.modo-lectura .btn-catalogo,
+  body.modo-lectura .btn-extra,
+  body.modo-lectura .btn-tipo,
+  body.modo-lectura input {
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+    font-size: 1rem !important; /* Ajusta el tamaño para que sea legible */
+    letter-spacing: 0.5px; /* Un poco de espacio extra ayuda a la lectura */
+    color: #000 !important; /* Texto negro puro para contraste */
+    background-color: #e0e0e0; /* Fondo neutro para los botones en este modo */
+    box-shadow: none !important;
+    border: 2px solid #333 !important; /* Borde claro para distinguir botones */
+  }
+
+  /* Opcional: Ocultar elementos decorativos en modo lectura */
+  body.modo-lectura body::before {
+    display: none;
+  }

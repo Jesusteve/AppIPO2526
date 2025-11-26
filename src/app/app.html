@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <img src="/img/logo.png" alt="Logo toolBox Go " class="icono">
+  <p>ToolBox Go</p>
+
+  <div class="right-section">
+    <button class="btn carro">🛒 </button>
+    <button class="btn btn-login">Iniciar sesión</button>
+    <button class="btn btn-register">
+      Registrarse
+    </button>
+  </div>
+
+
+</div>
+
+<div class="contenedor2">
+  <h1 class="titulo">Encuentra tus herramientas</h1>
+
+  <div class="search-box">
+    <input type="text" class="buscador" placeholder="¿Qué herramienta necesitas?">
+    <button class="btn-catalogo">Catálogo completo</button>
+  </div>
+  <button class="btn-extra">🔍 Buscar</button>
+  <div class="contenedor-accesibilidad">
+    <div class="reto-daltonismo" id="cuadroDaltonismo">
+      <h3>Filtros de accesibilidad</h3>
+      <button class="btn-tipo modo-deuteranopia" (click)="activarModo('deuteranopia')">Deuteranopía</button>
+      <button class="btn-tipo modo-protanopia" (click)="activarModo('protanopia')">Protanopía</button>
+      <button class="btn-tipo modo-lectura" (click)="activarModo('lectura')">Lectura adaptada</button>
+      <button class="btn-tipo" (click)="desactivarModos()">Normal</button>
+    </div>
+  </div>
+</div>
