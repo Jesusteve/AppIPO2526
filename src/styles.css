@@ -203,39 +203,126 @@ html, body {
     background-color: #a65f2a;
   }
 
-/* Menú lateral oculto por defecto */
+/* --- ESTILOS MENÚ LATERAL (SIDEBAR) --- */
 .side-menu {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #333;
-  color: white;
+  left: -320px; /* Escondido a la izquierda */
+  width: 320px;
+  height: 100vh; /* Altura completa */
+  background-color: #ffffff !important; /* IMPORTANTE: Fondo blanco */
+  color: #333;
   transition: left 0.3s ease;
-  padding-top: 60px;
-  z-index: 1000;
+  z-index: 2000; /* Capa muy superior para que nada lo tape */
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
 }
 
-  .side-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .side-menu li {
-    padding: 15px 20px;
-  }
-
-  .side-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-
+  /* Clase que abre el menú */
   .side-menu.open {
     left: 0;
   }
 
+/* Cabecera del menú */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logo-zona {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000;
+}
+
+/* Botón cerrar (X) */
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Lista de enlaces */
+.menu-list {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  flex: 1;
+}
+
+  .menu-list li {
+    margin-bottom: 20px;
+  }
+
+  .menu-list a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+    .menu-list a:hover {
+      color: #C77E3C;
+    }
+
+/* Iconos de Google */
+.material-symbols-outlined {
+  font-size: 24px;
+}
+
+/* Pie de página (Perfil) */
+.menu-footer {
+  padding: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.menu-item-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #333;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #ad947d;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* Fondo oscuro (Overlay) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1500; /* Debajo del menú (2000) pero encima del resto */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+  .overlay.visible {
+    opacity: 1;
+    visibility: visible;
+  }
 
 
   /* --- ESTILOS NUEVOS PARA LA CARGA (RETO 6) --- */

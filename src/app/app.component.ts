@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   modoActual: ModoAccesibilidad = 'normal';
   cargando: boolean = false;
   menuAbierto: boolean = false;
+  mostrarPanelDaltonismo: boolean = false;
+  mostrarPanelLectura: boolean = false;
 
   ngOnInit(): void {
     this.cargarModoGuardado();
@@ -82,5 +84,17 @@ export class AppComponent implements OnInit {
       alert('¡Búsqueda completada! (Aquí se mostrarían los resultados)');
     }, 2000);
   }
-  
+
+  // Función abrir panel
+  abrirPanelAccesibilidad(tipo: 'daltonismo' | 'lectura'): void {
+    this.menuAbierto = false; // IMPORTANTE: Cierra el menú al hacer click
+
+    if (tipo === 'daltonismo') {
+      this.mostrarPanelDaltonismo = true;
+      this.mostrarPanelLectura = false;
+    } else {
+      this.mostrarPanelLectura = true;
+      this.mostrarPanelDaltonismo = false;
+    }
+  }
 }
