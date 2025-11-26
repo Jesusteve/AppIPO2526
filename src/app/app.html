@@ -29,11 +29,16 @@
   <button class="btn-extra">🔍 Buscar</button>
   <div class="contenedor-accesibilidad">
     <div class="reto-daltonismo" id="cuadroDaltonismo">
-      <h3>Filtros de accesibilidad</h3>
+      <h3>Filtros de daltonismo</h3>
       <button class="btn-tipo modo-deuteranopia" (click)="activarModo('deuteranopia')">Deuteranopía</button>
       <button class="btn-tipo modo-protanopia" (click)="activarModo('protanopia')">Protanopía</button>
+      <button class="btn-tipo" (click)="desactivarModo('daltonismo')">Normal</button>
+    </div>
+
+    <div class="reto-lectura" id="cuadroLectura">
+      <h3>Filtro de lectura</h3>
       <button class="btn-tipo modo-lectura" (click)="activarModo('lectura')">Lectura adaptada</button>
-      <button class="btn-tipo" (click)="desactivarModos()">Normal</button>
+      <button class="btn-tipo" (click)="desactivarModo('lecturaDesc')">Normal</button>
     </div>
   </div>
 </div>

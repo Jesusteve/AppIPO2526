@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-type ModoDaltonismo = 'normal' | 'deuteranopia' | 'protanopia' | 'lectura';
+type ModoAccesibilidad = 'daltonismo' | 'deuteranopia' | 'protanopia' | 'lectura' | 'lecturaDesc' | 'normal';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,13 @@ type ModoDaltonismo = 'normal' | 'deuteranopia' | 'protanopia' | 'lectura';
   styleUrls: ['./app.css'] // si tienes estilos específicos
 })
 export class AppComponent implements OnInit {
-  modoActual: ModoDaltonismo = 'normal';
+  modoActual: ModoAccesibilidad = 'normal';
 
   ngOnInit(): void {
     this.cargarModoGuardado();
   }
 
-  activarModo(modo: ModoDaltonismo): void {
+  activarModo(modo: ModoAccesibilidad): void {
     if (modo === 'deuteranopia') {
       // Deuteranopía: dificultad para ver VERDES
       document.body.style.backgroundColor = 'rgba(200, 255, 200, 0.3)'; // Verde claro
@@ -30,11 +30,24 @@ export class AppComponent implements OnInit {
     }
     else if (modo === 'lectura') {
       document.body.classList.add('modo-lectura');
-      
+
 
     }
-    else {
+    else if (modo == 'daltonismo') {
       // Reset a normal
+      document.body.style.backgroundColor = '';
+      document.body.style.filter = 'none';
+      document.body.classList.remove('modo-protanopia', 'modo-deuteranopia');
+    }
+    else if (modo == 'lecturaDesc') {
+      document.body.style.fontFamily = '';
+      document.body.style.textAlign = '';
+      document.body.style.fontSize = '';
+      document.body.style.lineHeight = '';
+      document.body.style.color = '';
+      document.body.classList.remove('modo-lectura');
+    }
+    else {
       document.body.style.backgroundColor = '';
       document.body.style.filter = 'none';
       document.body.style.fontFamily = '';
@@ -42,19 +55,19 @@ export class AppComponent implements OnInit {
       document.body.style.fontSize = '';
       document.body.style.lineHeight = '';
       document.body.style.color = '';
-      document.body.classList.remove('modo-protanopia', 'modo-deuteranopia', 'modo-lectura');
+      document.body.classList.remove('modo-protanopia', 'modo-deuteranopia','modo-lectura');
     }
 
     this.modoActual = modo;
-    localStorage.setItem('modoDaltonismo', modo);
+    localStorage.setItem('ModoAccesibilidad', modo);
   }
-  desactivarModos(): void {
-    this.activarModo('normal');
+  desactivarModo(modo: ModoAccesibilidad): void {
+    this.activarModo(modo);
   }
 
 
   private cargarModoGuardado(): void {
-    const modoGuardado = localStorage.getItem('modoDaltonismo') as ModoDaltonismo;
+    const modoGuardado = localStorage.getItem('ModoAccesibilidad') as ModoAccesibilidad;
     if (modoGuardado && modoGuardado !== 'normal') {
       this.activarModo(modoGuardado);
     }
