@@ -203,6 +203,41 @@ html, body {
     background-color: #a65f2a;
   }
 
+/* Menú lateral oculto por defecto */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  transition: left 0.3s ease;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .side-menu li {
+    padding: 15px 20px;
+  }
+
+  .side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .side-menu.open {
+    left: 0;
+  }
+
+
+
   /* --- ESTILOS NUEVOS PARA LA CARGA (RETO 6) --- */
 
   /* Estado del botón cuando está cargando */
@@ -238,43 +273,144 @@ html, body {
 }
 
 
-/* Menú lateral oculto por defecto */
+/* --- ESTILOS MENÚ REPLICA EXACTA --- */
+
 .side-menu {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: -320px; /* Un poco más ancho */
+  width: 320px;
   height: 100%;
-  background-color: #333;
-  color: white;
+  background-color: #ffffff; /* FONDO BLANCO */
+  color: #333; /* TEXTO OSCURO */
   transition: left 0.3s ease;
-  padding-top: 60px;
   z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1); /* Sombra suave a la derecha */
+  /* Flexbox vertical para empujar el footer abajo */
+  display: flex;
+  flex-direction: column;
 }
-
-  .side-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .side-menu li {
-    padding: 15px 20px;
-  }
-
-  .side-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
 
   .side-menu.open {
     left: 0;
   }
 
-.container p {
+/* 1. CABECERA */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  margin-bottom: 20px;
+}
+
+.logo-zona {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.icon-logo {
+  font-size: 28px !important; /* Icono del martillo más grande */
+}
+
+/* Botón X de cerrar */
+.btn-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+}
+
+  .btn-close:hover {
+    color: #000;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+  }
+
+/* 2. LISTA DE ENLACES */
+.menu-list {
+  list-style: none;
+  padding: 0 20px;
+  flex: 1; /* Ocupa todo el espacio disponible */
+}
+
+  .menu-list li {
+    margin-bottom: 25px; /* Separación amplia entre items */
+  }
+
+  .menu-list a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre icono y texto */
+    transition: color 0.2s;
+  }
+
+    .menu-list a:hover {
+      color: #C77E3C; /* Tu color naranja de marca */
+    }
+
+/* Iconos de Google Material */
+.material-symbols-outlined {
   font-size: 24px;
+}
+
+/* 3. FOOTER DEL MENÚ (Perfil y Ajustes) */
+.menu-footer {
+  padding: 20px;
+  border-top: 1px solid #eee; /* Línea separadora sutil */
+}
+
+.menu-item-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  cursor: pointer;
   color: #333;
 }
+
+/* Círculo marrón del avatar */
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #ad947d; /* Color marrón suave de la foto */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.link-ajustes {
+  margin-bottom: 0; /* El último no necesita margen */
+}
+
+/* OVERLAY (Fondo oscuro) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+  .overlay.visible {
+    opacity: 1;
+    visibility: visible;
+  }
 
 /* Botones retos */
 /* Nuevo contenedor para agrupar las tablas horizontalmente */

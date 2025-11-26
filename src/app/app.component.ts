@@ -13,6 +13,7 @@ type ModoAccesibilidad = 'daltonismo' | 'deuteranopia' | 'protanopia' | 'lectura
 export class AppComponent implements OnInit {
   modoActual: ModoAccesibilidad = 'normal';
   cargando: boolean = false;
+  menuAbierto: boolean = false;
 
   ngOnInit(): void {
     this.cargarModoGuardado();
@@ -67,10 +68,7 @@ export class AppComponent implements OnInit {
   }
 
   toggleMenu(): void {
-    const sideMenu = document.getElementById('sideMenu');
-    if (sideMenu) {
-      sideMenu.classList.toggle('active');
-    }
+    this.menuAbierto = !this.menuAbierto;
   }
 
   realizarBusqueda(): void {
@@ -84,4 +82,5 @@ export class AppComponent implements OnInit {
       alert('¡Búsqueda completada! (Aquí se mostrarían los resultados)');
     }, 2000);
   }
+  
 }

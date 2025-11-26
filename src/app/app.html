@@ -17,7 +17,64 @@
   </div>
 
 
+
 </div>
+
+<div class="overlay"
+     [class.visible]="menuAbierto"
+     (click)="toggleMenu()">
+</div>
+
+<nav class="side-menu" [class.open]="menuAbierto">
+
+  <div class="menu-header">
+    <div class="logo-zona">
+      <span class="material-symbols-outlined icon-logo">handyman</span>
+      <span class="menu-titulo">Menú</span>
+    </div>
+    <button class="btn-close" (click)="toggleMenu()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <ul class="menu-list">
+    <li>
+      <a href="#" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">home</span> Inicio
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">inventory_2</span> Catálogo
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">sell</span> Principales ofertas
+      </a>
+    </li>
+    <li>
+      <a href="#" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">schedule_send</span> Programar pedido
+      </a>
+    </li>
+  </ul>
+
+  <div class="menu-footer">
+    <div class="menu-item-footer">
+      <div class="avatar-circle">
+        <span class="material-symbols-outlined">person</span>
+      </div>
+      <span>Mi perfil</span>
+    </div>
+
+    <div class="menu-item-footer link-ajustes">
+      <span class="material-symbols-outlined">settings</span>
+      <span>Ajustes</span>
+    </div>
+  </div>
+
+</nav>
 
 <div class="contenedor2">
   <h1 class="titulo">Encuentra tus herramientas</h1>
