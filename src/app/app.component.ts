@@ -68,6 +68,9 @@ export class AppComponent implements OnInit {
 
   private cargarModoGuardado(): void {
     const modoGuardado = localStorage.getItem('ModoAccesibilidad') as ModoAccesibilidad;
+    
+    
+    
     if (modoGuardado && modoGuardado !== 'normal') {
       this.activarModo(modoGuardado);
     }
