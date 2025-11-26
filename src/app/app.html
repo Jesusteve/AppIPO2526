@@ -26,19 +26,32 @@
     <input type="text" class="buscador" placeholder="¿Qué herramienta necesitas?">
     <button class="btn-catalogo">Catálogo completo</button>
   </div>
-  <button class="btn-extra">🔍 Buscar</button>
+  <button class="btn-extra"
+          (click)="realizarBusqueda()"
+          [class.loading-active]="cargando"
+          [disabled]="cargando">
+
+    <span *ngIf="!cargando">
+      🔍 Buscar
+    </span>
+
+    <span *ngIf="cargando" class="spinner-container">
+      <span class="spinner"></span> Buscando...
+    </span>
+
+  </button>
   <div class="contenedor-accesibilidad">
     <div class="reto-daltonismo" id="cuadroDaltonismo">
       <h3>Filtros de daltonismo</h3>
       <button class="btn-tipo deuteranopia" (click)="activarModo('deuteranopia')">Deuteranopía</button>
       <button class="btn-tipo protanopia" (click)="activarModo('protanopia')">Protanopía</button>
-      <button class="btn-tipo" (click)="desactivarModo('daltonismo')">Normal</button>
+      <button class="btn-tipo" (click)="desactivarModo('daltonismo')">Sin filtros</button>
     </div>
 
     <div class="reto-lectura" id="cuadroLectura">
       <h3>Filtro de lectura</h3>
       <button class="btn-tipo lectura" (click)="activarModo('lectura')">Lectura adaptada</button>
-      <button class="btn-tipo" (click)="desactivarModo('lecturaDesc')">Normal</button>
+      <button class="btn-tipo" (click)="desactivarModo('lecturaDesc')">Lectura normal</button>
     </div>
   </div>
 </div>

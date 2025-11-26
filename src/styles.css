@@ -182,21 +182,60 @@ html, body {
   }
 
 .btn-extra {
-  margin-top: 10px; /* separación respecto al buscador */
-  width: calc((500px + 24px)*1.3); /* mismo ancho que input + botón catálogo */
+  margin-top: 10px;
+  width: calc((500px + 24px) * 1.3);
   padding: 12px 24px;
   font-size: 1.2rem;
   border: 1px solid #ccc;
-  background-color: #C77E3C; /* mismo color que catálogo */
+  background-color: #C77E3C;
   color: white;
-  border-radius: 4px; /* bordes redondeados uniformes */
+  border-radius: 4px;
   cursor: pointer;
-  display: block; /* para que quede debajo */
+
+  display: flex; /* Antes era block, ahora flex para alinear icono/texto */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  gap: 10px; /* Espacio entre el spinner y el texto */
+  transition: all 0.3s; /* Suaviza los cambios de color */
 }
 
   .btn-extra:hover {
-    background-color: #a65f2a; /* mismo hover */
+    background-color: #a65f2a;
   }
+
+  /* --- ESTILOS NUEVOS PARA LA CARGA (RETO 6) --- */
+
+  /* Estado del botón cuando está cargando */
+  .btn-extra.loading-active {
+    background-color: #a65f2a; /* Mismo color que el hover */
+    cursor: wait; /* Cambia el cursor a reloj/espera */
+    opacity: 0.9;
+  }
+
+/* Contenedor para agrupar spinner y texto */
+.spinner-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* El dibujo del círculo de carga */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3); /* Borde semitransparente */
+  border-radius: 50%; /* Lo hace redondo */
+  border-top-color: #fff; /* La parte blanca que gira */
+  animation: spin 1s linear infinite; /* La animación de giro */
+  display: block;
+}
+
+/* La animación que hace rotar al spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
 /* Menú lateral oculto por defecto */
