@@ -9,7 +9,7 @@
   <p>ToolBox Go</p>
 
   <div class="right-section">
-    <button class="btn carro">🛒 </button>
+    <a routerLink="/carrito" class="btn carro">🛒 </a>
     <button class="btn btn-login" (click)="mostrarLogin = true">Iniciar sesión</button>
     <button class="btn btn-register" (click)="mostrarRegistro = true">Registrarse</button>
   </div>
@@ -34,7 +34,7 @@
 
   <ul class="menu-list">
 
-    
+
     <li>
       <a href="javascript:void(0)" (click)="toggleMenu()">
         <span class="material-symbols-outlined">inventory_2</span> Catálogo
@@ -73,7 +73,13 @@
       </div>
       <span>Mi perfil</span>
     </div>
-  </div>
+    <div class="menu-item-footer">
+      <div class="ajustes">
+        <span class="material-symbols-outlined">settings</span>
+      </div>
+      <span>Ajustes</span>
+      </div>
+    </div>
 </nav>
 
 <div class="contenedor2">
