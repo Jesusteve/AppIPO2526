@@ -9,11 +9,13 @@
   <p>ToolBox Go</p>
 
   <div class="right-section">
-    <button class="btn carro">🛒 </button>
+    <button routerLink="/carrito" routerLinkActive="active" class="btn carro">🛒</button>
     <button class="btn btn-login" (click)="mostrarLogin = true">Iniciar sesión</button>
     <button class="btn btn-register" (click)="mostrarRegistro = true">Registrarse</button>
   </div>
 </div>
+
+<router-outlet></router-outlet>
 
 <div class="overlay"
      [class.visible]="menuAbierto"
@@ -78,8 +80,8 @@
         <span class="material-symbols-outlined">settings</span>
       </div>
       <span>Ajustes</span>
-      </div>
     </div>
+  </div>
 </nav>
 
 <div class="contenedor2">

@@ -1,24 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink, RouterOutlet } from "@angular/router"; 
-
+import { Component } from '@angular/core';
 type ModoAccesibilidad = 'daltonismo' | 'deuteranopia' | 'protanopia' | 'lectura' | 'lecturaDesc' | 'normal';
-
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
-  templateUrl: './app.html',
-  styleUrls: ['./app.css'] // si tienes estilos específicos
+  selector: 'app-header',
+  imports: [],
+  templateUrl: './header.html',
+  styleUrl: './header.css',
 })
-export class AppComponent implements OnInit {
+export class Header {
   modoActual: ModoAccesibilidad = 'normal';
   cargando: boolean = false;
   menuAbierto: boolean = false;
   mostrarPanelDaltonismo: boolean = false;
   mostrarPanelLectura: boolean = false;
   mostrarLogin: boolean = false;
-  mostrarRegistro: boolean = false; 
+  mostrarRegistro: boolean = false;
 
   ngOnInit(): void {
     this.cargarModoGuardado();
@@ -64,9 +59,9 @@ export class AppComponent implements OnInit {
 
   private cargarModoGuardado(): void {
     const modoGuardado = localStorage.getItem('ModoAccesibilidad') as ModoAccesibilidad;
-    
-    
-    
+
+
+
     if (modoGuardado && modoGuardado !== 'normal') {
       this.activarModo(modoGuardado);
     }
