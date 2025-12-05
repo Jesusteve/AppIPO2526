@@ -1,0 +1,17 @@
+
+  <!-- Panel de accesibilidad-->
+  <div class="contenedor-accesibilidad" *ngIf="mostrarPanelDaltonismo || mostrarPanelLectura">
+    
+  </div>
+
+  <!-- Modales de login/registro -->
+  <div class="login-overlay" *ngIf="mostrarLogin" (click)="mostrarLogin = false"></div>
+  <div class="login-modal" *ngIf="mostrarLogin">
+    
+  </div>
+
+  <div class="login-overlay" *ngIf="mostrarRegistro" (click)="mostrarRegistro = false"></div>
+  <div class="login-modal" *ngIf="mostrarRegistro">
+ 
+  </div>
+
