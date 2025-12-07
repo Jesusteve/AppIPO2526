@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GpsComponent } from './gps/gps'
 
 type ModoAccesibilidad = 'daltonismo' | 'deuteranopia' | 'protanopia' | 'lectura' | 'lecturaDesc' | 'normal';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GpsComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'] // si tienes estilos específicos
+  styleUrls: ['./app.css'] 
 })
 export class AppComponent implements OnInit {
   modoActual: ModoAccesibilidad = 'normal';

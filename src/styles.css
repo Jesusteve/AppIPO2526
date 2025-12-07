@@ -736,3 +736,13 @@ body.modo-lectura {
     flex: 1;
   }
 
+.gps-retoPC1 {
+  position: fixed;
+  bottom: auto;
+  right: 20px;
+  top: 75px;
+  left: auto;
+  max-width: 300px;
+
+}
+

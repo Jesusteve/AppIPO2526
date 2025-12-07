@@ -1,0 +1,87 @@
+
+.gps-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.btn-gps {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+  .btn-gps:hover:not([disabled]) {
+    background: #45a049;
+  }
+
+  .btn-gps:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+  }
+
+.resultado {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.coordenadas {
+  text-align: left;
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+  .coordenadas p {
+    margin: 10px 0;
+  }
+
+.btn-maps {
+  background: #4285F4;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+  .btn-maps:hover {
+    background: #3367D6;
+  }
+
+.error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.btn-reintentar {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}

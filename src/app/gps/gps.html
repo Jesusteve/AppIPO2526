@@ -1,0 +1,52 @@
+
+<div class="gps-container">
+
+  <!-- Título y botón SOLO cuando NO hay ubicación NI error -->
+  <div *ngIf="!ubicacion && !error">
+    <h2>📍 Localización</h2>
+
+    <button (click)="obtenerUbicacion()"
+            [disabled]="cargando"
+            class="btn-gps">
+      {{ cargando ? 'Buscando...' : '¿Dónde estoy?' }}
+    </button>
+  </div>
+
+  <!-- Mostrar ubicación si la tenemos -->
+  <div *ngIf="ubicacion" class="resultado">
+    <h3>📍 Ubicación encontrada</h3>
+
+    <div class="coordenadas">
+      <p><strong>Latitud:</strong> {{ ubicacion.latitud | number:'1.5-5' }}</p>
+      <p><strong>Longitud:</strong> {{ ubicacion.longitud | number:'1.5-5' }}</p>
+      
+    </div>
+
+    <div class="botones">
+      <button (click)="verEnGoogleMaps()" class="btn-maps">
+        🗺️ Ver en Google Maps
+      </button>
+
+      <button (click)="reiniciar()" class="btn-reintentar">
+        🔄 Nueva búsqueda
+      </button>
+    </div>
+  </div>
+
+  <!-- Mostrar error si lo hay -->
+  <div *ngIf="error" class="error">
+    <h3>Error</h3>
+    <p>{{ error }}</p>
+
+    <div class="botones">
+      <button (click)="obtenerUbicacion()" class="btn-reintentar">
+        Intentar de nuevo
+      </button>
+
+      <button (click)="reiniciar()" class="btn-maps">
+        ↩️ Volver
+      </button>
+    </div>
+  </div>
+
+</div>
