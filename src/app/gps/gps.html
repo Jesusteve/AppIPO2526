@@ -3,7 +3,7 @@
 
   <!-- Título y botón SOLO cuando NO hay ubicación NI error -->
   <div *ngIf="!ubicacion && !error">
-    <h2>📍 Localización</h2>
+    <h1>📍 </h1>
 
     <button (click)="obtenerUbicacion()"
             [disabled]="cargando"
