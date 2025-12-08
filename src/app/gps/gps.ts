@@ -29,7 +29,9 @@ export class GpsComponent {
     try {
      
       this.ubicacion = await this.gpsService.obtenerUbicacion();
-      this.estado = "exito";
+      localStorage.setItem('ultimaUbicacion', JSON.stringify(this.ubicacion));
+
+      this.estado = "exito";    
     } catch (err: any) {
       this.error = err;
       this.estado = "error";

@@ -9,7 +9,7 @@ type ModoAccesibilidad = 'daltonismo' | 'deuteranopia' | 'protanopia' | 'lectura
   standalone: true,
   imports: [CommonModule, GpsComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'] 
+  styleUrls: ['./app.css']
 })
 export class AppComponent implements OnInit {
   modoActual: ModoAccesibilidad = 'normal';
@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
   mostrarPanelDaltonismo: boolean = false;
   mostrarPanelLectura: boolean = false;
   mostrarLogin: boolean = false;
-  mostrarRegistro: boolean = false; 
+  mostrarRegistro: boolean = false;
+  direccionEnvio: string = '';
 
   ngOnInit(): void {
     this.cargarModoGuardado();
@@ -64,9 +65,9 @@ export class AppComponent implements OnInit {
 
   private cargarModoGuardado(): void {
     const modoGuardado = localStorage.getItem('ModoAccesibilidad') as ModoAccesibilidad;
-    
-    
-    
+
+
+
     if (modoGuardado && modoGuardado !== 'normal') {
       this.activarModo(modoGuardado);
     }
@@ -102,5 +103,27 @@ export class AppComponent implements OnInit {
   }
   toggleLogin(): void {
     this.mostrarLogin = !this.mostrarLogin;
+  }
+
+  autocompletarUbi(input: HTMLInputElement) {
+    const ubi = localStorage.getItem('ultimaUbicacion');
+
+    if (!ubi) {
+      alert('Ubicación no detectada, habilita la detección');
+      return;
+    }
+
+    try {
+      const datos = JSON.parse(ubi);
+      input.value = datos.direccion;
+
+      // Feedback visual
+      input.style.borderColor = '#4CAF50';
+      input.style.backgroundColor = '#f0fff4';
+
+    }
+    catch (e) {
+      alert('Error al obtener la ubicación guardada');
+    }
   }
 }
