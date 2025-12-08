@@ -8,7 +8,7 @@
     <button (click)="obtenerUbicacion()"
             [disabled]="cargando"
             class="btn-gps">
-      {{ cargando ? 'Buscando...' : '¿Dónde estoy?' }}
+      {{ cargando ? 'Buscando...' : 'Detectar mi ubicación' }}
     </button>
   </div>
 
@@ -16,11 +16,10 @@
   <div *ngIf="ubicacion" class="resultado">
     <h3>📍 Ubicación encontrada</h3>
 
-    <div class="coordenadas">
-      <p><strong>Latitud:</strong> {{ ubicacion.latitud | number:'1.5-5' }}</p>
-      <p><strong>Longitud:</strong> {{ ubicacion.longitud | number:'1.5-5' }}</p>
-      
-    </div>
+    
+      <p><strong>Tu dirección:</strong></p>
+      <p class="texto-direccion">{{ ubicacion.direccion }}</p>
+   
 
     <div class="botones">
       <button (click)="verEnGoogleMaps()" class="btn-maps">

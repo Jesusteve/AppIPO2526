@@ -41,18 +41,11 @@ h2 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-.coordenadas {
-  text-align: left;
-  background: white;
-  padding: 15px;
-  border-radius: 6px;
-  margin: 15px 0;
+.texto-direccion {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
 }
-
-  .coordenadas p {
-    margin: 10px 0;
-  }
 
 .btn-maps {
   background: #4285F4;
@@ -62,7 +55,7 @@ h2 {
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
- 
+  margin-top: 15px;
 }
 
   .btn-maps:hover {

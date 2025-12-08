@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class GpsService {
 
   // Método para obtener la ubicación
-  obtenerUbicacion(): Promise<any> {
+  async obtenerUbicacion(): Promise<any> {
     return new Promise((resolve, reject) => {
       // 1. Verificar si el navegador soporta GPS
       if (!navigator.geolocation) {
@@ -17,11 +17,18 @@ export class GpsService {
 
       // 2. Pedir la ubicación al navegador
       navigator.geolocation.getCurrentPosition(
-        
-        (posicion) => {
+       
+        async (position) => {
+          const latitud = position.coords.latitude;
+          const longitud = position.coords.longitude;
+
+          const direccion = await this.coordenadasADireccion(latitud, longitud);
+
           resolve({
-            latitud: posicion.coords.latitude,
-            longitud: posicion.coords.longitude,
+            latitud: latitud,
+            longitud: longitud,
+            direccion: direccion
+            
           });
         },
         
@@ -35,4 +42,52 @@ export class GpsService {
       );
     });
   }
-}
+
+  private async coordenadasADireccion(lat: number, lon: number): Promise<string> {
+    try {
+      //Usamos OpenStreetMap Nominatim API para obtener la direccion
+      const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      //si mostramos display_name sin filtrar devuelve demasiados datos
+      const address = data.address || {};
+
+      //Filtramos
+      let direccion = '';
+
+      if (address.road) {
+        direccion += address.road;
+        if (address.house_number) {
+          direccion += ' ' + address.house_number;
+        }
+        direccion += ', ';
+      }
+
+      if (address.city) {
+        direccion += address.city + ', ';
+      } else if (address.town) {
+        direccion += address.town + ', ';
+      } else if (address.village) {
+        direccion += address.village + ', ';
+      }
+
+      if (address.province) {
+        direccion += address.province + ', ';
+      }
+
+      if (address.postcode) {
+        direccion += address.postcode;
+      }
+
+      if (!address.road && direccion) {
+        return 'En ${direccion}';
+      }
+     
+      return direccion || 'Dirección no encontrada';
+    } catch (error) {
+      console.log("Error obteniendo dirección");
+      return '${lat.toFixed(2)}, ${lon.toFixed(2)} '}
+    }
+  }
