@@ -87,12 +87,23 @@
     <h1 class="titulo">Encuentra tus herramientas</h1>
 
     <div class="search-box">
-      <input type="text" class="buscador" placeholder="¿Qué herramienta necesitas?">
+      
+      <div class="input-wrapper">
+        <input #buscadorInput type="text" class="buscador" placeholder="¿Qué herramienta necesitas?">
+        
+        <button class="btn-mic" 
+                (click)="activarReconocimientoVoz(buscadorInput)"
+                [class.escuchando]="escuchando"
+                title="Buscar por voz">
+          <span class="material-symbols-outlined">mic</span>
+        </button>
+      </div>
+
       <button class="btn-catalogo">Catálogo completo</button>
     </div>
 
     <button class="btn-extra"
-            (click)="realizarBusqueda()"
+            (click)="realizarBusqueda(buscadorInput.value)"
             [class.loading-active]="cargando"
             [disabled]="cargando">
       <span *ngIf="!cargando">🔍 Buscar</span>

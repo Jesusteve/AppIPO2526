@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   mostrarLogin: boolean = false;
   mostrarRegistro: boolean = false;
   direccionEnvio: string = '';
+  escuchando: boolean = false;
 
   ngOnInit(): void {
     this.cargarModoGuardado();
@@ -77,14 +78,23 @@ export class AppComponent implements OnInit {
     this.menuAbierto = !this.menuAbierto;
   }
 
-  realizarBusqueda(): void {
-    if (this.cargando) return; // Evita doble click
+  realizarBusqueda(terminoBusqueda: string): void {
+    if (this.cargando) return;
 
-    this.cargando = true; // Activa la animación
+    // Si el cuadro de búsqueda no está vacío, decimos qué buscamos
+    if (terminoBusqueda.trim()) {
+      this.hablar(`Buscando ${terminoBusqueda} en el catálogo...`);
+    } else {
+      this.hablar('Por favor, dime qué herramienta necesitas.');
+      return; // No buscamos si está vacío
+    }
 
-    // Simulamos un retraso de 2 segundos (tiempo percibido)
+    this.cargando = true;
+
+    // Simulamos el retraso
     setTimeout(() => {
-      this.cargando = false; // Desactiva la animación
+      this.cargando = false;
+      this.hablar(`Búsqueda completada. He encontrado resultados para ${terminoBusqueda}.`);
       alert('¡Búsqueda completada! (Aquí se mostrarían los resultados)');
     }, 2000);
   }
@@ -125,5 +135,52 @@ export class AppComponent implements OnInit {
     catch (e) {
       alert('Error al obtener la ubicación guardada');
     }
+  }
+  hablar(texto: string): void {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(texto);
+      utterance.lang = 'es-ES'; // Idioma español
+      utterance.rate = 1;       // Velocidad normal
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  activarReconocimientoVoz(inputElement: HTMLInputElement): void {
+    // Verificamos si el navegador soporta la API (Chrome, Edge, Safari reciente)
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert("Tu navegador no soporta el reconocimiento de voz. Intenta usar Google Chrome.");
+      return;
+    }
+
+    // Inicializamos la API (usando 'any' para evitar errores de tipado en TS estricto)
+    const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = 'es-ES'; // Configurado para Español
+    recognition.continuous = false; // Se detiene al dejar de hablar
+    recognition.interimResults = false; // Solo muestra resultados finales
+
+    recognition.onstart = () => {
+      this.escuchando = true; // Activa animación visual
+    };
+
+    recognition.onend = () => {
+      this.escuchando = false; // Desactiva animación visual
+    };
+
+    recognition.onresult = (event: any) => {
+      const resultado = event.results[0][0].transcript;
+
+      inputElement.value = resultado;
+
+      this.realizarBusqueda(resultado);
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error(event.error);
+      this.escuchando = false;
+    };
+
+    recognition.start();
   }
 }
