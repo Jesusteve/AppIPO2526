@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GpsComponent } from './gps/gps'
-
+import { ChatBot } from './chatbot/chatbot';
 type ModoAccesibilidad = 'daltonismo' | 'deuteranopia' | 'protanopia' | 'lectura' | 'lecturaDesc' | 'normal';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, GpsComponent],
+  imports: [CommonModule, GpsComponent, ChatBot],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
@@ -21,8 +21,10 @@ export class AppComponent implements OnInit {
   mostrarRegistro: boolean = false;
   direccionEnvio: string = '';
   escuchando: boolean = false;
+  showChat = false;
+  hasUnreadMessages = false;
 
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.cargarModoGuardado();
   }
 
@@ -182,5 +184,13 @@ export class AppComponent implements OnInit {
     };
 
     recognition.start();
+
+
+  }
+
+  onNewMessage(event: any) {
+    if (!this.showChat) {
+      this.hasUnreadMessages = true;
+    }
   }
 }

@@ -1,224 +1,237 @@
 
-  <div class="container">
-    <div class="menu-toggle" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <img src="/img/logo.png" alt="Logo" class="icono">
-    <p>ToolBox Go</p>
-
-    <div class="right-section">
-      <button class="btn carro">🛒 </button>
-      <button class="btn btn-login" (click)="mostrarLogin = true">Iniciar sesión</button>
-      <button class="btn btn-register" (click)="mostrarRegistro = true">Registrarse</button>
-    </div>
+<div class="container">
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
-  <div class="overlay"
-       [class.visible]="menuAbierto"
-       (click)="toggleMenu()">
+  <img src="/img/logo.png" alt="Logo" class="icono">
+  <p>ToolBox Go</p>
+
+  <div class="right-section">
+    <button class="btn carro">🛒 </button>
+    <button class="btn btn-login" (click)="mostrarLogin = true">Iniciar sesión</button>
+    <button class="btn btn-register" (click)="mostrarRegistro = true">Registrarse</button>
+  </div>
+</div>
+
+<div class="overlay"
+     [class.visible]="menuAbierto"
+     (click)="toggleMenu()">
+</div>
+
+<nav class="side-menu" [class.open]="menuAbierto">
+
+  <div class="menu-header">
+    <div class="logo-zona">
+      <span class="material-symbols-outlined icon-logo">handyman</span>
+      <span class="menu-titulo">Menú</span>
+    </div>
+    <button class="btn-close" (click)="toggleMenu()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
   </div>
 
-  <nav class="side-menu" [class.open]="menuAbierto">
+  <ul class="menu-list">
 
-    <div class="menu-header">
-      <div class="logo-zona">
-        <span class="material-symbols-outlined icon-logo">handyman</span>
-        <span class="menu-titulo">Menú</span>
+
+    <li>
+      <a href="javascript:void(0)" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">inventory_2</span> Catálogo
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">sell</span> Principales ofertas
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" (click)="toggleMenu()">
+        <span class="material-symbols-outlined">schedule_send</span> Programar pedido
+      </a>
+    </li>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 20px;">
+
+    <li>
+      <a href="javascript:void(0)" (click)="abrirPanelAccesibilidad('daltonismo')">
+        <span class="material-symbols-outlined">palette</span> Filtros Daltonismo
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" (click)="abrirPanelAccesibilidad('lectura')">
+        <span class="material-symbols-outlined">menu_book</span> Modo Lectura
+      </a>
+    </li>
+
+  </ul>
+
+  <div class="menu-footer">
+    <div class="menu-item-footer">
+      <div class="avatar-circle">
+        <span class="material-symbols-outlined">person</span>
       </div>
-      <button class="btn-close" (click)="toggleMenu()">
-        <span class="material-symbols-outlined">close</span>
+      <span>Mi perfil</span>
+    </div>
+    <div class="menu-item-footer">
+      <div class="ajustes">
+        <span class="material-symbols-outlined">settings</span>
+      </div>
+      <span>Ajustes</span>
+    </div>
+  </div>
+</nav>
+
+<div class="contenedor2">
+  <h1 class="titulo">Encuentra tus herramientas</h1>
+
+  <div class="search-box">
+
+    <div class="input-wrapper">
+      <input #buscadorInput type="text" class="buscador" placeholder="¿Qué herramienta necesitas?">
+
+      <button class="btn-mic"
+              (click)="activarReconocimientoVoz(buscadorInput)"
+              [class.escuchando]="escuchando"
+              title="Buscar por voz">
+        <span class="material-symbols-outlined">mic</span>
       </button>
     </div>
 
-    <ul class="menu-list">
+    <button class="btn-catalogo">Catálogo completo</button>
+  </div>
+
+  <button class="btn-extra"
+          (click)="realizarBusqueda(buscadorInput.value)"
+          [class.loading-active]="cargando"
+          [disabled]="cargando">
+    <span *ngIf="!cargando">🔍 Buscar</span>
+    <span *ngIf="cargando" class="spinner-container">
+      <span class="spinner"></span> Buscando...
+    </span>
+  </button>
 
 
-      <li>
-        <a href="javascript:void(0)" (click)="toggleMenu()">
-          <span class="material-symbols-outlined">inventory_2</span> Catálogo
-        </a>
-      </li>
-      <li>
-        <a href="javascript:void(0)" (click)="toggleMenu()">
-          <span class="material-symbols-outlined">sell</span> Principales ofertas
-        </a>
-      </li>
-      <li>
-        <a href="javascript:void(0)" (click)="toggleMenu()">
-          <span class="material-symbols-outlined">schedule_send</span> Programar pedido
-        </a>
-      </li>
+  <div class="contenedor-accesibilidad" *ngIf="mostrarPanelDaltonismo || mostrarPanelLectura">
 
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 20px;">
-
-      <li>
-        <a href="javascript:void(0)" (click)="abrirPanelAccesibilidad('daltonismo')">
-          <span class="material-symbols-outlined">palette</span> Filtros Daltonismo
-        </a>
-      </li>
-      <li>
-        <a href="javascript:void(0)" (click)="abrirPanelAccesibilidad('lectura')">
-          <span class="material-symbols-outlined">menu_book</span> Modo Lectura
-        </a>
-      </li>
-
-    </ul>
-
-    <div class="menu-footer">
-      <div class="menu-item-footer">
-        <div class="avatar-circle">
-          <span class="material-symbols-outlined">person</span>
-        </div>
-        <span>Mi perfil</span>
+    <div class="reto-daltonismo" *ngIf="mostrarPanelDaltonismo">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3>Filtros de daltonismo</h3>
+        <button (click)="mostrarPanelDaltonismo=false" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:white;">&times;</button>
       </div>
-      <div class="menu-item-footer">
-        <div class="ajustes">
-          <span class="material-symbols-outlined">settings</span>
-        </div>
-        <span>Ajustes</span>
-      </div>
-    </div>
-  </nav>
-
-  <div class="contenedor2">
-    <h1 class="titulo">Encuentra tus herramientas</h1>
-
-    <div class="search-box">
-      
-      <div class="input-wrapper">
-        <input #buscadorInput type="text" class="buscador" placeholder="¿Qué herramienta necesitas?">
-        
-        <button class="btn-mic" 
-                (click)="activarReconocimientoVoz(buscadorInput)"
-                [class.escuchando]="escuchando"
-                title="Buscar por voz">
-          <span class="material-symbols-outlined">mic</span>
-        </button>
-      </div>
-
-      <button class="btn-catalogo">Catálogo completo</button>
+      <button class="btn-tipo deuteranopia" (click)="activarModo('deuteranopia')">Deuteranopía</button>
+      <button class="btn-tipo protanopia" (click)="activarModo('protanopia')">Protanopía</button>
+      <button class="btn-tipo" (click)="activarModo('normal')">Sin filtros</button>
     </div>
 
-    <button class="btn-extra"
-            (click)="realizarBusqueda(buscadorInput.value)"
-            [class.loading-active]="cargando"
-            [disabled]="cargando">
-      <span *ngIf="!cargando">🔍 Buscar</span>
-      <span *ngIf="cargando" class="spinner-container">
-        <span class="spinner"></span> Buscando...
-      </span>
-    </button>
-   
-   
-    <div class="contenedor-accesibilidad" *ngIf="mostrarPanelDaltonismo || mostrarPanelLectura">
-
-      <div class="reto-daltonismo" *ngIf="mostrarPanelDaltonismo">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3>Filtros de daltonismo</h3>
-          <button (click)="mostrarPanelDaltonismo=false" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:white;">&times;</button>
-        </div>
-        <button class="btn-tipo deuteranopia" (click)="activarModo('deuteranopia')">Deuteranopía</button>
-        <button class="btn-tipo protanopia" (click)="activarModo('protanopia')">Protanopía</button>
-        <button class="btn-tipo" (click)="activarModo('normal')">Sin filtros</button>
+    <div class="reto-lectura" *ngIf="mostrarPanelLectura">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3>Filtro de lectura</h3>
+        <button (click)="mostrarPanelLectura=false" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:white;">&times;</button>
       </div>
-
-      <div class="reto-lectura" *ngIf="mostrarPanelLectura">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3>Filtro de lectura</h3>
-          <button (click)="mostrarPanelLectura=false" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:white;">&times;</button>
-        </div>
-        <button class="btn-tipo lectura" (click)="activarModo('lectura')">Lectura adaptada</button>
-        <button class="btn-tipo" (click)="desactivarModo('lecturaDesc')">Lectura normal</button>
-      </div>
-    </div>
-
-    <div class="login-overlay" *ngIf="mostrarLogin" (click)="mostrarLogin = false"></div>
-
-    <div class="login-modal" *ngIf="mostrarLogin">
-
-      <button class="close-login" (click)="mostrarLogin = false">&times;</button>
-
-      <h2 class="login-title">Iniciar sesión</h2>
-      <p class="login-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
-
-      <form class="login-form">
-        <div class="form-group">
-          <label>Correo electrónico</label>
-          <input type="email" placeholder="tu@email.com" class="login-input">
-        </div>
-
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input type="password" placeholder="........" class="login-input">
-        </div>
-
-        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-
-        <button type="button" class="btn-submit-login">Iniciar sesión</button>
-      </form>
-    </div>
-    <div class="login-overlay" *ngIf="mostrarRegistro" (click)="mostrarRegistro = false"></div>
-
-    <div class="login-modal" *ngIf="mostrarRegistro">
-
-      <button class="close-login" (click)="mostrarRegistro = false">&times;</button>
-
-      <h2 class="login-title">Crear cuenta</h2>
-      <p class="login-subtitle">Completa la información para registrarte</p>
-
-      <form class="login-form">
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" placeholder="Juan" class="login-input">
-          </div>
-          <div class="form-group">
-            <label>Apellidos</label>
-            <input type="text" placeholder="Pérez García" class="login-input">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Fecha de nacimiento</label>
-          <input type="date" class="login-input">
-        </div>
-
-        <div class="form-group">
-          <label>Dirección predeterminada de envío</label>
-          <input #inputDireccion  
-                 type="text" placeholder="Calle Principal 123, Ciudad" class="login-input"
-                 />
-          <span class="icono-gps" (click)="autocompletarUbi(inputDireccion)"
-                title="Usar mi ubicación"
-                style="cursor: pointer; color: blue; text-decoration: underline;">
-            Usar mi ubicación
-          </span> 
-        </div>
-
-
-        <div class="form-group">
-          <label>Correo electrónico</label>
-          <input type="email" placeholder="tu@email.com" class="login-input">
-        </div>
-
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input type="password" placeholder="........" class="login-input">
-        </div>
-
-        <button type="button" class="btn-submit-login" style="margin-top: 10px;">Registrarse</button>
-      </form>
+      <button class="btn-tipo lectura" (click)="activarModo('lectura')">Lectura adaptada</button>
+      <button class="btn-tipo" (click)="desactivarModo('lecturaDesc')">Lectura normal</button>
     </div>
   </div>
 
-<div class="gps-retoPC1">
-  
-   <main>
-     <app-gps></app-gps>  
-   </main>
+  <div class="login-overlay" *ngIf="mostrarLogin" (click)="mostrarLogin = false"></div>
 
- </div>
+  <div class="login-modal" *ngIf="mostrarLogin">
+
+    <button class="close-login" (click)="mostrarLogin = false">&times;</button>
+
+    <h2 class="login-title">Iniciar sesión</h2>
+    <p class="login-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
+
+    <form class="login-form">
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@email.com" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" placeholder="........" class="login-input">
+      </div>
+
+      <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+      <button type="button" class="btn-submit-login">Iniciar sesión</button>
+    </form>
+  </div>
+  <div class="login-overlay" *ngIf="mostrarRegistro" (click)="mostrarRegistro = false"></div>
+
+  <div class="login-modal" *ngIf="mostrarRegistro">
+
+    <button class="close-login" (click)="mostrarRegistro = false">&times;</button>
+
+    <h2 class="login-title">Crear cuenta</h2>
+    <p class="login-subtitle">Completa la información para registrarte</p>
+
+    <form class="login-form">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Juan" class="login-input">
+        </div>
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input type="text" placeholder="Pérez García" class="login-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de nacimiento</label>
+        <input type="date" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Dirección predeterminada de envío</label>
+        <input #inputDireccion
+               type="text" placeholder="Calle Principal 123, Ciudad" class="login-input" />
+        <span class="icono-gps" (click)="autocompletarUbi(inputDireccion)"
+              title="Usar mi ubicación"
+              style="cursor: pointer; color: blue; text-decoration: underline;">
+          Usar mi ubicación
+        </span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@email.com" class="login-input">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" placeholder="........" class="login-input">
+      </div>
+
+      <button type="button" class="btn-submit-login" style="margin-top: 10px;">Registrarse</button>
+    </form>
+  </div>
+</div>
+
+<div class="gps-retoPC1">
+
+  <main>
+    <app-gps></app-gps>
+  </main>
+
+</div>
+
+
+<div class="contenedor-ia">
+  <!-- Logo simple -->
+  <div class="ai-logo" (click)="showChat = !showChat">
+    <div class="logo">IA</div>
+  </div>
+
+  <!-- Chat -->
+  <div *ngIf="showChat" class="chat-overlay">
+    <app-chatbot></app-chatbot>
+  </div>
+
+</div>

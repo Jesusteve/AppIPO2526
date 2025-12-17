@@ -148,7 +148,6 @@ html, body {
   color: black;
 }
 
-/* Nuevo contenedor horizontal */
 .search-box {
   display: flex; /* Coloca input y botón en fila */
   align-items: center;
@@ -805,3 +804,27 @@ body.modo-lectura {
   }
 }
 
+.ai-logo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.chat-overlay {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 999;
+}
